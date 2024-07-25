@@ -40,7 +40,7 @@ function App() {
       <button className='button'>New</button>
       <ul>
         {colors.map((color)=> (
-          <li>
+          <li key={color.id}>
             <a href='#'>
               edit
             </a><Dot color={color.value}/> {color.name}
