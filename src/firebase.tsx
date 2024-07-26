@@ -16,5 +16,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 export default getFirestore()
-console.log('Firebase API Key:', process.env.REACT_APP_FIREBASE_API_KEY);
