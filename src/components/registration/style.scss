@@ -13,14 +13,14 @@
   &__form {
     width: 400px;
     min-height: 500px;
-    border: 2px solid $color_slategray;
+    border: 2px solid $gray-6;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     row-gap: 10px;
-    background-color: $color_white;
+    background-color: $white;
   }
 
   &__login {
@@ -38,7 +38,7 @@
   }
 
   .link {
-    color: $color_blue;
+    color: $DaybreakBlue_blue-6;
   }
 
   .label {
@@ -50,7 +50,7 @@
   }
 
   &_error {
-    color: $color_red;
+    color: $DustRed_red-6;
   }
 
 }

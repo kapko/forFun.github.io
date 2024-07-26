@@ -6,7 +6,7 @@ const RegistrationContainers = () => {
   const { error, email } = useRegisterStore();
 
   const onSubmit = async (data: FormValues) => {
-    await email(data.username, data.password);
+    await email(data);
   };
   return <Registration onSubmit={onSubmit} error={error}/>
 };

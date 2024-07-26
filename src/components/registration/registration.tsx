@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import {FormValues, inputFormType, RegisterProps} from "../auth/type";
+import { FormValues, RegisterProps} from "../auth/type";
 import { RegisterScheme } from "../../utils/authScheme";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
@@ -13,26 +13,31 @@ const Registration: React.FC<RegisterProps> = ({ onSubmit, error }) => {
     resolver: yupResolver(RegisterScheme)
   });
 
-  const inputForm: inputFormType<FormValues>[] = [
-    { placeholder: 'email', name: 'username', type: 'email' },
-    { placeholder: 'password', name: 'password', type: 'password' },
-    { placeholder: 'confirm password', name: 'confirmpassword', type: 'password' },
-  ];
-
   return (
     <div className='container'>
       <div className='register'>
         <form className='register__form' onSubmit={handleSubmit(onSubmit)}>
-          {inputForm.map(({ placeholder, name, type }) => (
-            <InputComponent
-              key={name}
-              control={control}
-              name={name}
-              placeholder={placeholder}
-              type={type}
-              error={errors[name]?.message}
-            />
-          ))}
+          <InputComponent
+            control={control}
+            name="username"
+            placeholder="Email"
+            type="email"
+            errors={errors.username?.message}
+          />
+          <InputComponent
+            control={control}
+            name="password"
+            placeholder="Пароль"
+            type="password"
+            errors={errors.password?.message}
+          />
+          <InputComponent
+            control={control}
+            name="confirmpassword"
+            placeholder="Подтвердите пароль"
+            type="password"
+            errors={errors.confirmpassword?.message}
+          />
           {error && <div className='register_error'>{error}</div>}
           <Link to={'/auth'} className='register__button'>У вас уже есть аккаунт? <span  className='link'>Войти</span></Link>
           <Button type="primary" htmlType="submit">Зарегистрироваться</Button>

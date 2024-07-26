@@ -8,10 +8,10 @@ interface InputComponentProps<T> {
   name: keyof T;
   placeholder: string;
   type: string;
-  error?: string;
+  errors?: string;
 }
 
-const InputComponent = <T,>({ control, name, placeholder, type, error }: InputComponentProps<T>) => {
+const InputComponent = <T,>({ control, name, placeholder, type, errors }: InputComponentProps<T>) => {
   return (
     <label className='label'>
       <Controller
@@ -27,7 +27,7 @@ const InputComponent = <T,>({ control, name, placeholder, type, error }: InputCo
           />
         )}
       />
-      {error && <span className='auth_error'>{error}</span>}
+      {errors && <span className='auth_error'>{errors}</span>}
     </label>
   );
 };

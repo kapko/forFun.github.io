@@ -4,14 +4,14 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'fire
 
 type AuthState = {
   error: string | null;
-  email: (username: string, password: string) => Promise<void>;
+  email: (data: {username: string, password: string}) => Promise<void>;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
   error: null,
-  email: async (username, password) => {
+  email: async (data) => {
     try {
-      await signInWithEmailAndPassword(auth, username, password);
+      await signInWithEmailAndPassword(auth, data.password, data.username);
       set({ error: null });
     } catch (error) {
       if(error instanceof  Error) {
@@ -25,10 +25,9 @@ export const useAuthStore = create<AuthState>((set) => ({
 
 export const useRegisterStore = create<AuthState>((set) => ({
   error: null,
-  email: async (username, password) => {
-    console.log(set, 'set')
+  email: async (data) => {
     try {
-      await createUserWithEmailAndPassword(auth, username, password);
+      await createUserWithEmailAndPassword(auth, data.password, data.username);
       set({ error: null });
     } catch (error) {
       if (error instanceof Error) {
