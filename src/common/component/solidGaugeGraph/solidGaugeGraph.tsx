@@ -48,11 +48,11 @@ const SolidChart:React.FC = () => {
       ],
       lineWidth: 0,
       tickWidth: 0,
-      minorTickInterval: undefined, // Use undefined if not needed
+      minorTickInterval: undefined,
       tickAmount: 2,
-      title: {
-        y: -70,
-      },
+      // title: {
+      //   y: -90,
+      // },
       labels: {
         y: 16,
       },
@@ -77,6 +77,7 @@ const SolidChart:React.FC = () => {
           min: 0,
           max: 200,
           title: {
+            y: -160,
             text: 'Speed',
           },
         },
@@ -109,6 +110,7 @@ const SolidChart:React.FC = () => {
           min: 0,
           max: 5,
           title: {
+            y:-160,
             text: 'RPM',
           },
         },
@@ -153,8 +155,8 @@ const SolidChart:React.FC = () => {
       if (chartRpm && chartRpm.series[0].points[0]) {
         point = chartRpm.series[0].points[0];
         if (point && point.y !== undefined) {
-          // inc = Math.random() - 0.5;
-          inc = Math.round((Math.random() - 0.5) * 100);
+          inc = Math.random() - 0.5;
+          // inc = Math.round((Math.random() - 0.5) * 100);
           newVal = point.y + inc;
 
           if (newVal < 0 || newVal > 5) {
