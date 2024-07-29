@@ -1,12 +1,10 @@
 import React from 'react';
-// import TestComponent from "./common/components/testComponent";
-import PieChartComponent from "./common/components/pieChartComponent/pieChartComponent";
 
+import SolidChart from "./common/component/solidGaugeGraph/solidGaugeGraph";
 
 function App() {
   return (
-    // <TestComponent/>
-    <PieChartComponent/>
+    <SolidChart/>
   )
 }
 
