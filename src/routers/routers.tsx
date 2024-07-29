@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import Registration from "../containers/registration";
-import LoginContainer from "../containers/auth";
+import Registration from "../pages/registration/Registration";
+import LoginContainer from "../pages/signIn/SignIn";
 
 export const router = createBrowserRouter([
   {
@@ -9,7 +9,7 @@ export const router = createBrowserRouter([
     element: <Registration/>,
   },
   {
-    path: '/auth',
+    path: '/signIn',
     element: <LoginContainer/>,
   },
 ]);

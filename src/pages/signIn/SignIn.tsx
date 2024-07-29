@@ -2,15 +2,17 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
-import { Button, Card } from "antd";
-import InputComponent from "../inputComponent";
-import Error from "../error";
-import './style.scss';
+import {Alert, Button, Card} from "antd";
+import InputComponent from "../../common/components/Input/Input";
+import './SignIn.styles.scss';
 
-import { AuthData, AuthProps } from "./type";
 import { AuthScheme } from "../../utils/authScheme";
+import { Typography } from 'antd';
+import {useAuthStore} from "../../store/actions";
+import {AuthData} from "./type";
+const { Title } = Typography;
 
-const Authorization: React.FC<AuthProps<AuthData>> = ({ error, onSubmit }) => {
+const Authorization = () => {
   const {
     control,
     handleSubmit,
@@ -19,17 +21,26 @@ const Authorization: React.FC<AuthProps<AuthData>> = ({ error, onSubmit }) => {
     resolver: yupResolver(AuthScheme)
   });
 
+  const { error, email } = useAuthStore();
+
+  const onLoginSubmit = async (data: AuthData) => {
+    await email(data);
+  };
+
+
   return (
     <div className="container">
       <div className="auth">
         <Card className='card'>
-          <form className="auth__form" onSubmit={handleSubmit(onSubmit)}>
+          <Title className='title' level={2}>Вход</Title>
+          <form className="auth__form" onSubmit={handleSubmit(onLoginSubmit)}>
             <InputComponent
               control={control}
               name="username"
               placeholder="Email"
               type="email"
               errors={errors.username?.message}
+              label="Почта"
             />
             <InputComponent
               control={control}
@@ -37,10 +48,11 @@ const Authorization: React.FC<AuthProps<AuthData>> = ({ error, onSubmit }) => {
               placeholder="Пароль"
               type="password"
               errors={errors.password?.message}
+              label="Пароль"
             />
-            <Error error={error}/>
+            {error && <Alert message={error} type="error" />}
             <Link to={'/'} className='auth__link'>У вас еще нет учетной записи? <span className='link'>Зарегистрируйтесь сейчас</span></Link>
-            <Button type="primary" htmlType="submit">Войти</Button>
+            <Button type="primary" htmlType="submit"><Title level={5}>Войти</Title></Button>
           </form>
         </Card>
       </div>

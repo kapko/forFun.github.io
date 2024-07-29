@@ -4,18 +4,19 @@
   margin: 0 auto;
 }
 
-.auth {
+.register {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
 
   .card {
-    border-radius: 15px;
     width: 400px;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
+    min-height: 500px;
+  }
+
+  .title {
+    text-align: center;
   }
 
   &__form {
@@ -23,31 +24,25 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    row-gap: 15px;
+    row-gap: 12px;
   }
 
   &__login {
     width: 300px;
   }
 
-  .label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+  &__input {
+    width: 350px;
+    height: 45px;
   }
 
   &__link {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 14px;
+    column-gap: 5px;
     color: var(--gray-13);
 
     .link {
-      font-size: 14px;
       color: var(--blue-6);
-      cursor: pointer;
     }
 
     &:hover {
@@ -55,10 +50,36 @@
     }
   }
 
-
+  .label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+  }
 
   &_error {
     color: var(--red-6);
   }
 
 }
+
+/* ant design */
+
+.ant-form-item {
+  margin-bottom: 0px;
+}
+
+.ant-btn {
+  .ant-typography {
+    margin: 0px;
+    color: var(--gray-1);
+  }
+}
+
+.ant-form-item-explain-error {
+  padding-top: 4px;
+  text-align: center;
+}
+
+/* ant design */
