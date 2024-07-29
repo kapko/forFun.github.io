@@ -12,7 +12,7 @@ import {useAuthStore} from "../../store/actions";
 import {AuthData} from "./type";
 const { Title } = Typography;
 
-const Authorization = () => {
+const SignIn = () => {
   const {
     control,
     handleSubmit,
@@ -60,4 +60,4 @@ const Authorization = () => {
   );
 };
 
-export default Authorization;
+export default SignIn;
