@@ -1,15 +1,15 @@
 import { create } from 'zustand';
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { AuthData, LoginProps } from "../pages/signIn/type";
 
-type AuthState = {
-  error: string | null;
-  email: (data: { username: string, password: string }) => Promise<void>;
+type AuthState = LoginProps &{
+  submit: (data: AuthData) => Promise<void>;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
   error: null,
-  email: async (data) => {
+  submit: async (data) => {
     try {
       await signInWithEmailAndPassword(auth, data.username, data.password);
       set({ error: null });
@@ -25,7 +25,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
 export const useRegisterStore = create<AuthState>((set) => ({
   error: null,
-  email: async (data) => {
+  submit: async (data) => {
     try {
       await createUserWithEmailAndPassword(auth, data.username, data.password);
       set({ error: null });

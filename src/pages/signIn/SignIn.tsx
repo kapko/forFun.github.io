@@ -2,14 +2,16 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
-import {Alert, Button, Card} from "antd";
+import { Button, Card} from "antd";
 import InputComponent from "../../common/components/Input/Input";
-import './SignIn.styles.scss';
+import './signIn.styles.scss';
 
-import { AuthScheme } from "../../utils/authScheme";
+import { AuthScheme } from "../../common/validations/authScheme";
 import { Typography } from 'antd';
-import {useAuthStore} from "../../store/actions";
-import {AuthData} from "./type";
+import { useAuthStore } from "../../auth/auth.store";
+import { AuthData } from "./type";
+import AlertInfo from "../../common/components/AlertInfo/AletInfo";
+import { Paths } from "../../routers/paths";
 const { Title } = Typography;
 
 const SignIn = () => {
@@ -21,12 +23,11 @@ const SignIn = () => {
     resolver: yupResolver(AuthScheme)
   });
 
-  const { error, email } = useAuthStore();
+  const { error, submit } = useAuthStore();
 
   const onLoginSubmit = async (data: AuthData) => {
-    await email(data);
+    await submit(data);
   };
-
 
   return (
     <div className="container">
@@ -50,8 +51,8 @@ const SignIn = () => {
               errors={errors.password?.message}
               label="Пароль"
             />
-            {error && <Alert message={error} type="error" />}
-            <Link to={'/'} className='auth__link'>У вас еще нет учетной записи? <span className='link'>Зарегистрируйтесь сейчас</span></Link>
+            {error && <AlertInfo error={error}/>}
+            <Link to={Paths.SIGN_UP} className='auth__link'>У вас еще нет учетной записи? <span className='link'>Зарегистрируйтесь сейчас</span></Link>
             <Button type="primary" htmlType="submit"><Title level={5}>Войти</Title></Button>
           </form>
         </Card>

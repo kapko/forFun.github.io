@@ -19,7 +19,7 @@ export const AuthScheme = yup.object({
 
 export const RegisterScheme = yup.object({
   ...scheme,
-  confirmpassword: passwordValidation
+  confirmPassword: passwordValidation
     .oneOf([yup.ref('password')], 'Пароли должны совпадать')
     .required('Подтверждение пароля обязательно для заполнения')
 });

@@ -2,25 +2,26 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
-import { Alert, Button, Card } from "antd";
+import { Button, Card } from "antd";
 import InputComponent from "../../common/components/Input/Input";
-import './Registration.styles.scss';
+import './registration.styles.scss';
 
-import { FormValues, AuthProps } from "../signIn/type";
-import { RegisterScheme } from "../../utils/authScheme";
+import { FormValues } from "../signIn/type";
+import { RegisterScheme } from "../../common/validations/authScheme";
 import { Typography } from 'antd';
-import { useRegisterStore } from "../../store/actions";
+import { useRegisterStore } from "../../auth/auth.store";
+import AlertInfo from "../../common/components/AlertInfo/AletInfo";
+import {Paths} from "../../routers/paths";
 const { Title } = Typography;
 
 const Registration = () => {
-  const { error, email } = useRegisterStore();
-
+  const { error, submit } = useRegisterStore();
   const { control, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: yupResolver(RegisterScheme)
   });
 
   const onSubmit = async (data: FormValues) => {
-    await email(data);
+    await submit(data);
   };
 
   return (
@@ -47,14 +48,14 @@ const Registration = () => {
             />
             <InputComponent
               control={control}
-              name="confirmpassword"
+              name="confirmPassword"
               placeholder="Подтвердите пароль"
               type="password"
-              errors={errors.confirmpassword?.message}
+              errors={errors.confirmPassword?.message}
               label="Подтвердите пароль"
             />
-            {error && <Alert message={error} type="error" />}
-            <Link to={'/signIn'} className='register__link'>У вас уже есть аккаунт? <span className='link'>Войти</span></Link>
+            {error && <AlertInfo error={error}/>}
+            <Link to={Paths.SIGN_IN} className='register__link'>У вас уже есть аккаунт? <span className='link'>Войти</span></Link>
             <Button type="primary" htmlType="submit"><Title level={5}>Зарегистрироваться</Title></Button>
           </form>
         </Card>
