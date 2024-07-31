@@ -1,9 +1,11 @@
 import React from 'react';
 
+import SolidChart from "./common/component/solidGaugeGraph/solidGaugeGraph";
+
 function App() {
   return (
-    <div></div>
-  );
+    <SolidChart/>
+  )
 }
 
 export default App;
