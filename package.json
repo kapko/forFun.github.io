@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/react-form": "^0.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -25,12 +27,16 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test-storybook": "test-storybook"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:storybook/recommended"
     ]
   },
   "browserslist": {
@@ -44,5 +50,27 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-essentials": "^8.2.6",
+    "@storybook/addon-interactions": "^8.2.6",
+    "@storybook/addon-links": "^8.2.6",
+    "@storybook/addon-onboarding": "^8.2.6",
+    "@storybook/blocks": "^8.2.6",
+    "@storybook/preset-create-react-app": "^8.2.6",
+    "@storybook/react": "^8.2.6",
+    "@storybook/react-webpack5": "^8.2.6",
+    "@storybook/test": "^8.2.6",
+    "@storybook/test-runner": "^0.19.1",
+    "css-loader": "^7.1.2",
+    "eslint-plugin-storybook": "^0.8.0",
+    "postcss-loader": "^8.1.1",
+    "prop-types": "^15.8.1",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.77.8",
+    "sass-loader": "^16.0.0",
+    "storybook": "^8.2.6",
+    "webpack": "^5.93.0"
   }
 }
