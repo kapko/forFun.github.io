@@ -1,27 +1,30 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import {Control, useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
 import { Button, Card } from "antd";
 import InputComponent from "../../common/components/Input/Input";
 import './registration.styles.scss';
 
-import { FormValues } from "../signIn/type";
+import { FormValues } from "../../store/auth/auth.type";
 import { RegisterScheme } from "../../common/validations/authScheme";
 import { Typography } from 'antd';
-import { useRegisterStore } from "../../auth/auth.store";
+import { useAuthStore } from "../../store/auth/auth.store";
 import AlertInfo from "../../common/components/AlertInfo/AletInfo";
-import {Paths} from "../../routers/paths";
-const { Title } = Typography;
+import { Paths } from "../../routers/paths";
+import { useTranslation } from "../../common/locale/translation";
+const { Title,Text} = Typography;
 
 const Registration = () => {
-  const { error, submit } = useRegisterStore();
+  const { signInError, signUp } = useAuthStore();
+  const { auth } = useTranslation();
+
   const { control, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: yupResolver(RegisterScheme)
   });
 
   const onSubmit = async (data: FormValues) => {
-    await submit(data);
+    await signUp(data);
   };
 
   return (
@@ -54,9 +57,9 @@ const Registration = () => {
               errors={errors.confirmPassword?.message}
               label="Подтвердите пароль"
             />
-            {error && <AlertInfo error={error}/>}
-            <Link to={Paths.SIGN_IN} className='register__link'>У вас уже есть аккаунт? <span className='link'>Войти</span></Link>
-            <Button type="primary" htmlType="submit"><Title level={5}>Зарегистрироваться</Title></Button>
+            <AlertInfo message={signInError} type='error' />
+            <Text>У вас уже есть аккаунт? <Link to={Paths.SIGN_IN} target="_blank">{auth.signIn}</Link></Text>
+            <Button type="primary" htmlType="submit"><Title level={5}>{auth.signUp}</Title></Button>
           </form>
         </Card>
       </div>

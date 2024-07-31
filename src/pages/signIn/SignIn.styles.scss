@@ -27,10 +27,6 @@
     row-gap: 12px;
   }
 
-  &__login {
-    width: 300px;
-  }
-
   .label {
     display: flex;
     flex-direction: column;
@@ -42,31 +38,16 @@
     flex-direction: column;
     align-items: center;
     font-size: 14px;
-    color: var(--gray-13);
-
-    .link {
-      font-size: 14px;
-      color: var(--blue-6);
-      cursor: pointer;
-    }
-
-    &:hover {
-      color: inherit;
-    }
-  }
-
-  &_error {
-    color: var(--red-6);
   }
 
 }
 
 .ant-form-item {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 .ant-btn {
   .ant-typography {
-    margin: 0px;
+    margin: 0;
     color: var(--gray-1);
   }
 }

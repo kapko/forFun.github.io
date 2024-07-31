@@ -7,5 +7,6 @@ export type FormValues = AuthData & {
 };
 
 export type LoginProps = {
-  error: string | null;
+  signInError: string | null;
+  signUpError: string | null;
 };

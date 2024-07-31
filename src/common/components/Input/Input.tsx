@@ -1,34 +1,33 @@
 import React from 'react';
-import {Form, Input} from 'antd';
-import {Control, Controller} from 'react-hook-form';
-import { FormValues } from "../../../pages/signIn/type";
+import { Form, Input } from 'antd';
+import { Control, Controller, FieldValues, Path } from 'react-hook-form';
 
-interface InputComponentProps<T> {
-  control: Control<any>;
-  name: keyof T;
+type InputComponentProps<T extends FieldValues> = {
+  control: Control<T>;
+  name: Path<T>;
   placeholder: string;
   type: string;
   errors?: string;
-  label: string;
+  label?: string;
 }
 
-const InputComponent = <T extends FormValues>({ control, name, placeholder, type, errors, label }: InputComponentProps<T>) => {
+const InputComponent = <T extends FieldValues>(rest: InputComponentProps<T>) => {
+  const { errors, label} = rest;
+
   return (
     <Controller
-      name={name as string}
-      control={control}
+      {...rest}
       render={({ field }) => (
         <Form.Item
-          label={label}
-          name={name as string}
+          label={label ? label : null}
+          name={field.name as string}
           rules={[{ required: true }]}
           validateStatus={errors ? "error" : ""}
           help={errors}
         >
           <Input
             className='register__input'
-            type={type}
-            placeholder={placeholder}
+            {...rest}
             {...field}
           />
         </Form.Item>
