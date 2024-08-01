@@ -1,3 +1,4 @@
+@import "../../common/styles/variables";
 .container {
   width: 1300px;
   margin: 0 auto;
@@ -11,15 +12,15 @@
 
   &__form {
     width: 400px;
-    height: 500px;
-    border: 2px solid slategray;
+    min-height: 500px;
+    border: 2px solid $color_slategray;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     row-gap: 10px;
-    background-color: #ffffff;
+    background-color: $color_white;
   }
 
   &__login {
@@ -37,7 +38,7 @@
   }
 
   .link {
-    color: blue;
+    color: $color_blue;
   }
 
   .label {
@@ -49,7 +50,7 @@
   }
 
   &_error {
-    color: red;
+    color: $color_red;
   }
 
 }

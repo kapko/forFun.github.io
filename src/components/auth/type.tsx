@@ -11,9 +11,9 @@ export type AuthData = {
   password: string;
 };
 
-export type inputFormType = {
+export type inputFormType<T> = {
   placeholder: string;
-  name: keyof FormValues | keyof AuthData;
+  name: keyof T;
   type: string;
 };
 

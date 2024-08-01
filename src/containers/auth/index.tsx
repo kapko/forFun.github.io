@@ -1,28 +1,15 @@
 import React, { useState } from 'react';
-import { auth } from "../../firebase";
 import { AuthData } from "../../components/auth/type";
 import Authorization from "../../components/auth/authorization";
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useAuthStore } from "../../store/actions";
 const LoginContainer = () => {
-  const [error, setError] = useState<string | null>(null);
+  const { error, email } = useAuthStore();
 
   const onLoginSubmit = async (data: AuthData) => {
-    console.log(data, 'data')
-    try {
-      await signInWithEmailAndPassword(auth, data.username, data.password);
-      setError(null);
-    } catch (error) {
-      if(error){
-        setError('Пароль или логин введены неправильно');
-      }
-    }
+    await email(data.username, data.password);
   };
 
-  return (
-    <div>
-      <Authorization error={error} onSubmit={onLoginSubmit}/>
-    </div>
-  );
+  return <Authorization error={error} onSubmit={onLoginSubmit}/>
 };
 
 export default LoginContainer;
