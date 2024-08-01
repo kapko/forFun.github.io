@@ -1,25 +1,34 @@
 import * as yup from 'yup';
+import { useTranslation } from '../locale/translation';
 
-const requiredStringWithName = (name = 'Поле') => yup.string().required(`${name} обязательно для заполнения`).trim();
+const useValidationSchemes = () => {
+  const { schemeText } = useTranslation();
 
-const passwordValidation = yup.string()
-  .min(6, 'Пароль должен быть не менее 6 символов')
-  .required('Пароль обязательно для заполнения');
+  const requiredStringWithName = (name: string = 'Поле') => yup.string().required(schemeText.required(name)).trim();
 
-const scheme = {
-  username: requiredStringWithName('Имя пользователя').min(3, 'Имя пользователя должно быть не менее 3 символов')
-    .max(50, 'Имя пользователя должно быть не более 50 символов'),
-  password: passwordValidation,
+  const passwordValidation = yup.string()
+    .min(6, schemeText.minLength('Пароль', 6))
+    .required(schemeText.required('Пароль'));
+
+  const scheme = {
+    username: requiredStringWithName('Имя пользователя')
+      .min(3, schemeText.usernameMin)
+      .max(50, schemeText.usernameMax),
+    password: passwordValidation,
+  };
+
+  return {
+    AuthScheme: yup.object({
+      username: scheme.username,
+      password: scheme.password,
+    }),
+    RegisterScheme: yup.object({
+      ...scheme,
+      confirmPassword: passwordValidation
+        .oneOf([yup.ref('password')], schemeText.passwordMismatch)
+        .required(schemeText.confirmPassword)
+    }),
+  };
 };
 
-export const AuthScheme = yup.object({
-  username: scheme.username,
-  password: scheme.password,
-});
-
-export const RegisterScheme = yup.object({
-  ...scheme,
-  confirmPassword: passwordValidation
-    .oneOf([yup.ref('password')], 'Пароли должны совпадать')
-    .required('Подтверждение пароля обязательно для заполнения')
-});
+export default useValidationSchemes;

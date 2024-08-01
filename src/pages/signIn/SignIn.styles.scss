@@ -1,14 +1,10 @@
 @import "../../common/styles/variables";
-.container {
-  width: 1300px;
-  margin: 0 auto;
-}
-
 .auth {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: var(--gray-2);
 
   .card {
     width: 400px;
