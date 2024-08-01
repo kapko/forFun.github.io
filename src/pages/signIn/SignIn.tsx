@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
 import { Button, Card } from "antd";
 import InputComponent from "../../common/components/Input/Input";
-import './signin.styles.scss';
+import './SignIn.styles.scss';
 
 import useValidationSchemes from "../../common/validations/authScheme";
 import { Typography } from 'antd';

@@ -29,7 +29,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "lint": "eslint . --fix --max-warnings=20"
+    "lint": "eslint . --fix --max-warnings=20",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
