@@ -1,5 +1,4 @@
-import { SubmitHandler } from 'react-hook-form';
-
+import { SubmitHandler, FieldValues } from 'react-hook-form';
 
 export type AuthData = {
   username: string;
@@ -9,14 +8,10 @@ export type FormValues = AuthData & {
   confirmpassword: string;
 };
 
-type LoginProps = {
+export type LoginProps = {
   error: string | null;
 };
 
-export type AuthProps = LoginProps & {
-  onSubmit: SubmitHandler<AuthData>;
-};
-
-export type RegisterProps = LoginProps & {
-  onSubmit: SubmitHandler<FormValues>;
+export type AuthProps<T extends FieldValues> = LoginProps & {
+  onSubmit: SubmitHandler<T>;
 };

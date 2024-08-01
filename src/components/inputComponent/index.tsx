@@ -23,7 +23,6 @@ const InputComponent = <T,>({ control, name, placeholder, type, errors }: InputC
             type={type}
             placeholder={placeholder}
             {...field}
-            prefix={type === 'email' ? <UserOutlined /> : null}
           />
         )}
       />

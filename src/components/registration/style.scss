@@ -10,17 +10,20 @@
   justify-content: center;
   height: 100vh;
 
-  &__form {
+  .card {
     width: 400px;
     min-height: 500px;
-    border: 2px solid $gray-6;
-    border-radius: 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     row-gap: 10px;
-    background-color: $white;
   }
 
   &__login {
@@ -32,14 +35,21 @@
     height: 45px;
   }
 
-  &__button {
+  &__link {
     display: flex;
     column-gap: 5px;
+    color: var(--gray-13);
+
+    .link {
+      color: var(--blue-6);
+    }
+
+    &:hover {
+      color: inherit;
+    }
   }
 
-  .link {
-    color: $DaybreakBlue_blue-6;
-  }
+
 
   .label {
     display: flex;
@@ -50,7 +60,7 @@
   }
 
   &_error {
-    color: $DustRed_red-6;
+    color: var(--red-6);
   }
 
 }

@@ -10,25 +10,24 @@
   justify-content: center;
   height: 100vh;
 
-  &__form {
+  .card {
+    border-radius: 15px;
     width: 400px;
-    min-height: 500px;
-    border: 2px solid $gray-6;
-    border-radius: 10px;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     row-gap: 15px;
-    background-color: $white;
   }
 
   &__login {
     width: 300px;
-  }
-
-  &__button {
-    font-size: 18px;
   }
 
   .label {
@@ -38,22 +37,28 @@
     gap: 5px;
   }
 
-  &__button {
+  &__link {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0px;
     font-size: 14px;
+    color: var(--gray-13);
+
+    .link {
+      font-size: 14px;
+      color: var(--blue-6);
+      cursor: pointer;
+    }
+
+    &:hover {
+      color: inherit;
+    }
   }
 
-  .link {
-    font-size: 14px;
-    color: $DaybreakBlue_blue-6;
-    cursor: pointer;
-  }
+
 
   &_error {
-    color: $DustRed_red-6;
+    color: var(--red-6);
   }
 
 }

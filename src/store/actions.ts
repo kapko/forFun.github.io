@@ -4,19 +4,19 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'fire
 
 type AuthState = {
   error: string | null;
-  email: (data: {username: string, password: string}) => Promise<void>;
+  email: (data: { username: string, password: string }) => Promise<void>;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
   error: null,
   email: async (data) => {
     try {
-      await signInWithEmailAndPassword(auth, data.password, data.username);
+      await signInWithEmailAndPassword(auth, data.username, data.password);
       set({ error: null });
     } catch (error) {
-      if(error instanceof  Error) {
+      if (error instanceof Error) {
         set({ error: 'Пароль или логин введены неправильно' });
-      }else {
+      } else {
         set({ error: 'Произошла ошибка при авторизации!' });
       }
     }
@@ -27,7 +27,7 @@ export const useRegisterStore = create<AuthState>((set) => ({
   error: null,
   email: async (data) => {
     try {
-      await createUserWithEmailAndPassword(auth, data.password, data.username);
+      await createUserWithEmailAndPassword(auth, data.username, data.password);
       set({ error: null });
     } catch (error) {
       if (error instanceof Error) {
@@ -38,4 +38,3 @@ export const useRegisterStore = create<AuthState>((set) => ({
     }
   },
 }));
-
