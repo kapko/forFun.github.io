@@ -2,7 +2,7 @@
   "name": "new-poject",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "dependencies": {    
     "@hookform/resolvers": "^3.9.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -26,6 +26,8 @@
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0",
     "zustand": "^4.5.4"
+    "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/react-form": "^0.1.0",
   },
   "scripts": {
     "prepare": "husky install",
@@ -34,11 +36,15 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject"
-  },
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test-storybook": "test-storybook"
+     },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:storybook/recommended"
     ]
   },
   "browserslist": {
@@ -54,13 +60,34 @@
     ]
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-essentials": "^8.2.6",
+    "@storybook/addon-interactions": "^8.2.6",
+    "@storybook/addon-links": "^8.2.6",
+    "@storybook/addon-onboarding": "^8.2.6",
+    "@storybook/blocks": "^8.2.6",
+    "@storybook/preset-create-react-app": "^8.2.6",
+    "@storybook/react": "^8.2.6",
+    "@storybook/react-webpack5": "^8.2.6",
+    "@storybook/test": "^8.2.6",
+    "@storybook/test-runner": "^0.19.1",
+    "css-loader": "^7.1.2",
+    "eslint-plugin-storybook": "^0.8.0",
+    "postcss-loader": "^8.1.1",
+    "prop-types": "^15.8.1",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.77.8",
+    "sass-loader": "^16.0.0",
+    "storybook": "^8.2.6",
+    "webpack": "^5.93.0"
+    "@craco/craco": "^7.1.0",
     "@eslint/js": "^9.8.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.35.0",
     "globals": "^15.8.0",
     "husky": "^9.1.4",
     "typescript-eslint": "^7.18.0",
-     "@craco/craco": "^7.1.0",
+    "@craco/craco": "^7.1.0",
     "craco-alias": "^3.0.1"
   },
   "lint-staged": {
