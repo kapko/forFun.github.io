@@ -1,11 +1,9 @@
 import React from 'react';
-
-import SolidChart from "./common/component/solidGaugeGraph/solidGaugeGraph";
+import { router } from "./routers/routers";
+import { RouterProvider } from "react-router-dom";
 
 function App() {
-  return (
-    <SolidChart/>
-  )
+  return <RouterProvider router={router}/>
 }
 
 export default App;

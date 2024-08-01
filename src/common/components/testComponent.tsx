@@ -36,7 +36,6 @@ const TestComponent = () => {
 
     return () => unsubscribe();
   }, []);
-  console.log(colors)
   return (
     <div className='root'>
       <button className='button'>New</button>
