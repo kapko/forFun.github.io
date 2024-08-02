@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert } from 'antd';
-import {AlertProps} from "antd/es/alert/Alert";
+import { AlertProps } from "antd/es/alert/Alert";
 
 /***
   * Alert component for custom adding input field

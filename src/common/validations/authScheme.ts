@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { useTranslation } from '../locale/translation';
+import { useTranslation } from "@common/locale/translation";
 
 const useValidationSchemes = () => {
   const { schemeText } = useTranslation();

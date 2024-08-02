@@ -1,7 +1,7 @@
 import { create } from 'zustand';
-import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { AuthData, LoginProps } from "./auth.type";
+import { auth } from "@/firebase";
+import { AuthData, LoginProps } from "@/store/auth/auth.type";
 
 type signInType = (data: AuthData) => Promise<void>;
 type AuthState = LoginProps & {
