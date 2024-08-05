@@ -1,18 +1,23 @@
-import React from 'react'
-import {
-  Form,
-  Input,
-  Button, Checkbox, Space,
-} from 'antd-mobile'
-import {LockOutline, UserOutline} from "antd-mobile-icons";
+import {useForm} from "react-hook-form";
+import {Form, Button} from "antd-mobile";
+import CustomInput from "./customInput/customInput";
+import './index.scss'
+import {FormData} from "./type";
+import { yupResolver } from "@hookform/resolvers/yup";
+import useValidationSchemes from "../../validation/schema";
 
-const LoginMobile =  () => {
+function MyForm() {
+  const { AuthScheme} = useValidationSchemes();
+  const { handleSubmit,
+    formState: { errors },
+    control } =
+    useForm<FormData>({ resolver: yupResolver(AuthScheme) });
+
+  const onSubmit = (data: FormData) => console.log(data,'data');
 
   return (
-    // <Space justify={"center"} align={"center"} style={{height:'100vh'}} block>
-      <Form
-        layout='horizontal'
-        footer={
+    <Form onFinish={handleSubmit(onSubmit)}
+          footer={
         <>
           <Button block type='submit'
                   color='primary'
@@ -20,41 +25,34 @@ const LoginMobile =  () => {
           style={{marginBottom:20}}>
             Log In
           </Button>
-          Or <a href="" style={{textDecoration:"none"}}>register now!</a>
+          Or <a href="#">register now!</a>
         </>
         }>
-        <Form.Header>Login Form</Form.Header>
-        <Form.Item
-          layout='horizontal'
-          name='name'
-          label={<UserOutline/>}
-          rules={[{ required: true, message: 'Please input your Username!' }]}
-        >
-          <Input onChange={console.log} placeholder='Username' clearable maxLength={20}/>
-        </Form.Item>
-        <Form.Item
-          layout='horizontal'
-          name='password'
-          label={<LockOutline/>}
-          rules={[{ required: true, message: 'Please input your Password!'}]}
-        >
-          <Input onChange={console.log}
-                 placeholder='Password'
-                 clearable type='password'
-                maxLength={50}
-        />
-        </Form.Item>
-        <Form.Item>
-          <Space direction='horizontal' justify='between' block>
-            <Checkbox block>Remember me</Checkbox>
-            <a href="" style={{textDecoration:"none"}}>
-              Forgot password
-            </a>
-          </Space>
-        </Form.Item>
-      </Form>
-    // </Space>
-  )
+      <Form.Header>Login Form</Form.Header>
+      <CustomInput
+        label='Username'
+        name='username'
+        control={control}
+        rules={{ required:'username is required' }}
+        placeholder='Enter your user name'
+        type='text'
+      />
+      {errors.username && (
+        <p className='error-message'>{errors.username.message}</p>
+      )}
+      <CustomInput
+        label='password'
+        name='password'
+        control={control}
+        rules={{ required:'password is required' }}
+        placeholder='Enter your password'
+        type='text'
+      />
+      {errors.password && (
+        <p className='error-message'>{errors.password.message}</p>
+      )}
+    </Form>
+  );
 }
 
-export default LoginMobile;
+export default MyForm;
