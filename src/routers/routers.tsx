@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import Registration from "@/pages/registration/registration";
-import SignIn from "@/pages/signIn/signIn";
+import Registration from "@/pages/auth/registration/registration";
+import SignIn from "@/pages/auth/signIn/signIn";
 import { Paths } from "@/routers/paths";
 
 export const router = createBrowserRouter([

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input } from 'antd';
 import { Control, Controller, FieldValues, Path } from 'react-hook-form';
+import './input.styles.scss'
 
 type InputComponentProps<T extends FieldValues> = {
   control: Control<T>;
@@ -26,7 +27,7 @@ const InputComponent = <T extends FieldValues>(rest: InputComponentProps<T>) => 
           help={errors}
         >
           <Input
-            className='register__input'
+            className='input'
             {...rest}
             {...field}
           />
