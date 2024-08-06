@@ -1,5 +1,6 @@
+import React from "react";
 import {useForm} from "react-hook-form";
-import {Form, Button} from "antd-mobile";
+import {Form} from "antd-mobile";
 import { Typography, Flex } from "antd";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useValidationSchemes from "../../../validation/schema";
@@ -7,12 +8,24 @@ import InputMobile from "@common/components/mobile/Input/Input.mobile";
 import {AuthData} from "@/store/auth/auth.type";
 import {SignInFooter} from "@/pages/signIn/mobile/SignInFooter";
 import "./styles.scss"
+import {useAuthStore} from "@/store/auth/auth.store";
 
 const { Title } = Typography;
 function MyForm() {
+  const {  signIn } = useAuthStore();
   const { AuthScheme} = useValidationSchemes();
-  const { handleSubmit, formState: { errors } , control } = useForm<AuthData>({ resolver: yupResolver(AuthScheme) });
-  const onSubmit = (data: AuthData) => console.log(data,'data');
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<AuthData>({
+    resolver: yupResolver(AuthScheme)
+  });
+
+  const onSubmit = async (data: AuthData) => {
+    await signIn(data);
+  };
 
   return (
     <>
@@ -27,12 +40,12 @@ function MyForm() {
           error={errors.username?.message}
         />
         <InputMobile
-          label='Пароль'
-          name='password'
-          errors={errors.password?.message}
           control={control}
-          placeholder='Enter your password'
-          type='text'
+          name="password"
+          placeholder="Пароль"
+          type="password"
+          error={errors.password?.message}
+          label="Пароль"
         />
       </Form>
     </>
