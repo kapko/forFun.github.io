@@ -18,7 +18,6 @@ function MyForm() {
     <>
       <Flex justify="center"><Title level={4}>Вход</Title></Flex>
       <Form className="sign-form" onFinish={handleSubmit(onSubmit)} footer={<SignInFooter />}>
-        {/*<Form.Header>Вход</Form.Header>*/}
         <InputMobile
           label='Имя'
           name='username'
