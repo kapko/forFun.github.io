@@ -4,12 +4,16 @@ import React from "react";
 import {Button} from "antd-mobile";
 import {Flex, Typography} from "antd";
 import {useTranslation} from "@common/locale/translation";
+import AlertInfo from "@common/components/web/AlertInfo/AletInfo";
+import {useAuthStore} from "@/store/auth/auth.store";
 
 const { Text } = Typography;
 export const FooterRegistration = () => {
   const { auth } = useTranslation();
+  const { signInError } = useAuthStore();
   return(
     <>
+      <AlertInfo message={signInError} type='error'/>
       <Flex align={"center"} justify={"center"} gap={5}>
         <Text>У вас уже есть аккаунт? <Link to={Paths.SIGN_IN_MOBILE} target="_blank">{auth.signIn}</Link></Text>
       </Flex>

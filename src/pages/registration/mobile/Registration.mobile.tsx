@@ -35,7 +35,7 @@ const RegistrationMobile = () => {
             name='username'
             control={control}
             placeholder='Enter your user name'
-            type='text'
+            type='email'
             error={errors.username?.message}
           />
           <InputMobile
