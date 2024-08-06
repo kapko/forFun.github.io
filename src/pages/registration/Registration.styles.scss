@@ -1,0 +1,30 @@
+@import "../../common/styles/variables";
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--gray-2);
+
+  .card {
+    width: 400px;
+    min-height: 500px;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+
+  &__input {
+    width: 350px;
+    height: 45px;
+  }
+}
