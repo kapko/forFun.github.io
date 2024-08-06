@@ -1,27 +1,25 @@
 import React from "react";
-import { useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
-import { Button, Card } from "antd";
-import InputComponent from "../../common/components/Input/Input";
-import './Registration.styles.scss';
-
-import { FormValues } from "../../store/auth/auth.type";
-import useValidationSchemes from "../../common/validations/authScheme";
-import { Typography } from 'antd';
-import { useAuthStore } from "../../store/auth/auth.store";
-import AlertInfo from "../../common/components/AlertInfo/AletInfo";
-import { Paths } from "../../routers/paths";
-import { useTranslation } from "../../common/locale/translation";
+import { Button, Flex, Typography } from "antd";
+import { useAuthStore } from "@/store/auth/auth.store";
+import { useTranslation } from "@common/locale/translation";
+import useValidationSchemes from "@common/validations/authScheme";
+import InputComponent from "@common/components/Input/Input";
+import AlertInfo from "@common/components/AlertInfo/AletInfo";
+import { Paths } from "@/routers/paths";
+import { FormValues } from "@/store/auth/auth.type";
+import AuthWrapper from "@/pages/auth/authWrapper";
 const { Title,Text} = Typography;
 
 const Registration = () => {
   const { signInError, signUp } = useAuthStore();
   const { auth } = useTranslation();
-  const { RegisterScheme} = useValidationSchemes();
+  const { useAuthSchema } = useValidationSchemes();
 
   const { control, handleSubmit, formState: { errors } } = useForm<FormValues>({
-    resolver: yupResolver(RegisterScheme)
+    resolver: yupResolver(useAuthSchema)
   });
 
   const onSubmit = async (data: FormValues) => {
@@ -29,10 +27,11 @@ const Registration = () => {
   };
 
   return (
-    <div className='register'>
-      <Card className='card'>
-        <Title className='title' level={2}>Регистрация</Title>
-        <form className='register__form' onSubmit={handleSubmit(onSubmit)}>
+    <AuthWrapper
+      title="Регистрация"
+    >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Flex justify='center' align='center' className='form'>
           <InputComponent
             control={control}
             name="username"
@@ -58,11 +57,11 @@ const Registration = () => {
             label="Подтвердите пароль"
           />
           <AlertInfo message={signInError} type='error'/>
-          <Text>У вас уже есть аккаунт? <Link to={Paths.SIGN_IN} target="_blank">{auth.signIn}</Link></Text>
-          <Button type="primary" htmlType="submit"><Title level={5}>{auth.signUp}</Title></Button>
-        </form>
-      </Card>
-    </div>
+          <Text className='title'>У вас уже есть аккаунт? <Link to={Paths.SIGN_IN} target="_blank">{auth.signIn}</Link></Text>
+          <Button className='title' type="primary" htmlType="submit"><Title level={5}>{auth.signUp}</Title></Button>
+        </Flex>
+      </form>
+    </AuthWrapper>
   );
 };
 
