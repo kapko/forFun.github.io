@@ -5,13 +5,12 @@ import {useForm} from "react-hook-form";
 import { FormValues} from "@/store/auth/auth.type";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {Flex, Typography} from "antd";
-import {Card} from 'antd-mobile'
 import {Form} from "antd-mobile";
 import InputMobile from "@common/components/mobile/Input/Input.mobile";
-import {FooterRegistration} from "@/pages/registration/mobile/FooterRegistration";
+import {FooterSignUp} from "@/pages/registration/mobile/FooterSignUp";
 
 const { Title} = Typography;
-const RegistrationMobile = () => {
+const SignUpMobile = () => {
   const { signUp } = useAuthStore();
 
   const { RegisterScheme} = useValidationSchemes();
@@ -25,14 +24,14 @@ const RegistrationMobile = () => {
   };
 
   return (
-      <Card>
+    <>
         <Flex justify="center"><Title level={4}>Регистрация</Title></Flex>
-        <Form className="sign-form" onFinish={handleSubmit(onSubmit)} footer={<FooterRegistration/>}>
+        <Form className="sign-form" onFinish={handleSubmit(onSubmit)} footer={<FooterSignUp/>}>
           <InputMobile
             label='Почта'
             name='username'
             control={control}
-            placeholder='Enter your user name'
+            placeholder='sample@gmail.com'
             type='email'
             error={errors.username?.message}
           />
@@ -42,7 +41,7 @@ const RegistrationMobile = () => {
             error={errors.password?.message}
             control={control}
             type='password'
-            placeholder='Enter your password'
+            placeholder='******'
           />
           <InputMobile
             control={control}
@@ -53,7 +52,7 @@ const RegistrationMobile = () => {
             label="Подтвердите пароль"
           />
         </Form>
-      </Card>
+      </>
   );
 }
-export default RegistrationMobile;
+export default SignUpMobile;

@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { Paths } from "./paths";
 import Registration from "../pages/registration/Registration";
 import SignIn from "../pages/signIn/SignIn";
-import RegistrationMobile from "@/pages/registration/mobile/Registration.mobile";
+import SignUpMobile from "@/pages/registration/mobile/SignUp.mobile";
 import SignInMobile from "@/pages/signIn/mobile/SignIn.mobile";
 
 export const router = createBrowserRouter([
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
   },
   {
     path: Paths.SIGN_UP_MOBILE,
-    element: <RegistrationMobile/>,
+    element: <SignUpMobile/>,
   },
   {
     path: Paths.SIGN_IN_MOBILE,

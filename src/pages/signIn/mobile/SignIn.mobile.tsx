@@ -12,7 +12,7 @@ import {useAuthStore} from "@/store/auth/auth.store";
 
 const { Title } = Typography;
 function MyForm() {
-  const {  signIn } = useAuthStore();
+  const { signIn } = useAuthStore();
   const { AuthScheme} = useValidationSchemes();
 
   const {
@@ -53,3 +53,5 @@ function MyForm() {
 }
 
 export default MyForm;
+
+
