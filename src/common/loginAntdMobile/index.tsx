@@ -1,5 +1,5 @@
 import {useForm} from "react-hook-form";
-import {Form, Button} from "antd-mobile";
+import {Form, Button, Space} from "antd-mobile";
 import CustomInput from "./customInput/customInput";
 import './index.scss'
 import {FormData} from "./type";
@@ -23,14 +23,14 @@ function MyForm() {
                   color='primary'
                   size='large'
           style={{marginBottom:20}}>
-            Log In
+            Войти
           </Button>
-          Or <a href="#">register now!</a>
+          Или <a href="#">зарегистрируйтесь сейчас</a>
         </>
         }>
-      <Form.Header>Login Form</Form.Header>
+      <Form.Header>Вход</Form.Header>
       <CustomInput
-        label='Username'
+        label='Имя'
         name='username'
         control={control}
         rules={{ required:'username is required' }}
@@ -41,7 +41,7 @@ function MyForm() {
         <p className='error-message'>{errors.username.message}</p>
       )}
       <CustomInput
-        label='password'
+        label='Пароль'
         name='password'
         control={control}
         rules={{ required:'password is required' }}
