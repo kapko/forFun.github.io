@@ -8,7 +8,6 @@ import {Flex, Typography} from "antd";
 import {Card} from 'antd-mobile'
 import {Form} from "antd-mobile";
 import InputMobile from "@common/components/mobile/Input/Input.mobile";
-import './styles.scss'
 import {FooterRegistration} from "@/pages/registration/mobile/FooterRegistration";
 
 const { Title} = Typography;
@@ -26,8 +25,7 @@ const RegistrationMobile = () => {
   };
 
   return (
-    <div className='registerMobile'>
-      <Card className='cardMobile'>
+      <Card>
         <Flex justify="center"><Title level={4}>Регистрация</Title></Flex>
         <Form className="sign-form" onFinish={handleSubmit(onSubmit)} footer={<FooterRegistration/>}>
           <InputMobile
@@ -56,7 +54,6 @@ const RegistrationMobile = () => {
           />
         </Form>
       </Card>
-    </div>
   );
 }
 export default RegistrationMobile;
