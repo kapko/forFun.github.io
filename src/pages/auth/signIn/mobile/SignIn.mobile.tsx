@@ -3,12 +3,12 @@ import {useForm} from "react-hook-form";
 import {Form} from "antd-mobile";
 import { Typography, Flex } from "antd";
 import { yupResolver } from "@hookform/resolvers/yup";
-import useValidationSchemes from "../../../validation/schema";
 import InputMobile from "@common/components/mobile/Input/Input.mobile";
 import {AuthData} from "@/store/auth/auth.type";
-import {SignInFooter} from "@/pages/signIn/mobile/SignInFooter";
+import {SignInFooter} from "@/pages/auth/signIn/mobile/SignInFooter";
 import "./styles.scss"
 import {useAuthStore} from "@/store/auth/auth.store";
+import useValidationSchemes from "@common/validations/authScheme";
 
 const { Title } = Typography;
 function MyForm() {

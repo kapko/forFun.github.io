@@ -7,16 +7,16 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {Flex, Typography} from "antd";
 import {Form} from "antd-mobile";
 import InputMobile from "@common/components/mobile/Input/Input.mobile";
-import {FooterSignUp} from "@/pages/registration/mobile/FooterSignUp";
+import {FooterSignUp} from "@/pages/auth/signUp/mobile/FooterSignUp";
 
 const { Title} = Typography;
 const SignUpMobile = () => {
   const { signUp } = useAuthStore();
 
-  const { RegisterScheme} = useValidationSchemes();
+  const { useAuthSchema} = useValidationSchemes();
 
   const { control, handleSubmit, formState: { errors } } = useForm<FormValues>({
-    resolver: yupResolver(RegisterScheme)
+    resolver: yupResolver(useAuthSchema)
   });
 
   const onSubmit = async (data: FormValues) => {

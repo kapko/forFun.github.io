@@ -1,10 +1,10 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { Paths } from "./paths";
-import Registration from "../pages/registration/Registration";
-import SignIn from "../pages/signIn/SignIn";
-import SignUpMobile from "@/pages/registration/mobile/SignUp.mobile";
-import SignInMobile from "@/pages/signIn/mobile/SignIn.mobile";
+import SignUpMobile from "@/pages/auth/signUp/mobile/SignUp.mobile";
+import SignInMobile from "@/pages/auth/signIn/mobile/SignIn.mobile";
+import Registration from "@/pages/auth/signUp/signUp";
+import SignIn from "@/pages/auth/signIn/signIn";
 
 export const router = createBrowserRouter([
   {
