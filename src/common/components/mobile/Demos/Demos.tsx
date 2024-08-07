@@ -1,13 +1,8 @@
 import React from 'react'
-import type { FC, ReactNode } from 'react'
+import type { FC } from 'react'
 import "./styles.scss";
 
-interface Props {
-  title: string
-  padding?: string
-  background?: string
-  children?: ReactNode
-}
+type Props = React.PropsWithChildren<{title?: string,padding?:string,background?:string}>
 
 export const Demos: FC<Props> = props => {
   return (

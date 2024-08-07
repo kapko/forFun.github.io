@@ -56,3 +56,4 @@ const SignUpMobile = () => {
   );
 }
 export default SignUpMobile;
+

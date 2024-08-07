@@ -1,15 +1,23 @@
 import React from 'react';
-import {Controller} from 'react-hook-form';
-import {Form, Input, InputProps} from "antd-mobile";
+import {Control, Controller, FieldValues, Path} from 'react-hook-form';
+import {Form, Input} from "antd-mobile";
 import { Typography } from "antd";
 const { Text } = Typography;
 
-const InputMobile: React.FC<InputProps & Record<string, any>> = ({error, label, name, control, rules, placeholder, type}) => {
+type InputComponentProps<T extends FieldValues> = {
+  control: Control<T>;
+  name: Path<T>;
+  placeholder: string;
+  type: string;
+  error?: string;
+  label?: string;
+}
+
+const InputMobile = <T extends FieldValues>({error, label, name, control, placeholder, type}:InputComponentProps<T>) => {
   return (
     <Controller
-      name={`${name}`}
+      name={name}
       control={control}
-      rules={rules}
       render={({field}) => (
         <Form.Item
           layout='vertical'
@@ -23,3 +31,7 @@ const InputMobile: React.FC<InputProps & Record<string, any>> = ({error, label, 
   );
 };
 export default InputMobile;
+
+
+
+

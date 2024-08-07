@@ -3,15 +3,20 @@
   &:last-of-type {
     padding-bottom: 32px;
   }
+
+  .title {
+    padding: 12px 12px 8px;
+    color: #697b8c;
+    font-size: 14px;
+  }
+  .main {
+    border-right: none;
+    border-left: none;
+  }
 }
 
-.title {
-  padding: 12px 12px 8px;
-  color: #697b8c;
-  font-size: 14px;
-}
 
-.main {
-  border-right: none;
-  border-left: none;
-}
+
+
+
+
