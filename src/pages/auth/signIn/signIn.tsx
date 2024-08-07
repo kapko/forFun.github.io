@@ -3,14 +3,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
 import { Button, Card } from "antd";
-import InputComponent from "@common/components/web/Input/Input";
+import InputComponent from "../../common/components/Input/Input";
 import './SignIn.styles.scss';
 
 import useValidationSchemes from "../../common/validations/authScheme";
 import { Typography } from 'antd';
 import { useAuthStore } from "../../store/auth/auth.store";
 import { AuthData } from "../../store/auth/auth.type";
-import AlertInfo from "@common/components/web/AlertInfo/AletInfo";
+import AlertInfo from "../../common/components/AlertInfo/AletInfo";
 import { Paths } from "../../routers/paths";
 import { useTranslation } from "../../common/locale/translation";
 const { Title, Text } = Typography;

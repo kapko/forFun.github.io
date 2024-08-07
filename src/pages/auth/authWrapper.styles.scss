@@ -1,0 +1,36 @@
+@import "@/common/styles/variables";
+.auth {
+  height: 100vh;
+  background: var(--gray-2);
+
+  .form {
+    flex-direction: column;
+    row-gap: 12px;
+  }
+
+  .title {
+    text-align: center;
+    max-width: 300px;
+  }
+
+  .card {
+    width: 400px;
+    min-height: 450px;
+  }
+
+}
+
+.ant-form-item {
+  margin-bottom: 0;
+}
+.ant-btn {
+  .ant-typography {
+    margin: 0;
+    color: var(--gray-1);
+  }
+}
+
+.ant-form-item-explain-error {
+  padding-top: 4px;
+  text-align: center;
+}
