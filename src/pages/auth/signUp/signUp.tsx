@@ -6,11 +6,11 @@ import { Button, Flex, Typography } from "antd";
 import { useAuthStore } from "@/store/auth/auth.store";
 import { useTranslation } from "@common/locale/translation";
 import useValidationSchemes from "@common/validations/authScheme";
-import InputComponent from "@common/components/Input/Input";
-import AlertInfo from "@common/components/AlertInfo/AletInfo";
 import { Paths } from "@/routers/paths";
 import { FormValues } from "@/store/auth/auth.type";
 import AuthWrapper from "@/pages/auth/authWrapper";
+import InputComponent from "@common/components/web/Input/Input";
+import AlertInfo from "@common/components/web/AlertInfo/AletInfo";
 const { Title,Text} = Typography;
 
 const Registration = () => {

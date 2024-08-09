@@ -2,7 +2,7 @@
   "name": "new-poject",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {    
+   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -12,6 +12,8 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "antd": "^5.19.3",
+    "antd-mobile": "^5.37.1",
+    "antd-mobile-icons": "^0.3.0",
     "firebase": "^10.12.4",
     "highcharts": "^11.4.6",
     "highcharts-react-official": "^3.2.1",
