@@ -1,0 +1,17 @@
+.demoBlock {
+  margin-bottom: 12px;
+}
+.demoBlock:last-of-type {
+  padding-bottom: 32px;
+}
+.demoBlock .title {
+  padding: 12px 12px 8px;
+  color: #697b8c;
+  font-size: 14px;
+}
+.demoBlock .main {
+  border-right: none;
+  border-left: none;
+}
+
+/*# sourceMappingURL=styles.css.map */

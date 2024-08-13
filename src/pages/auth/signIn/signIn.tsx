@@ -25,7 +25,6 @@ const SignIn = () => {
   } = useForm<AuthData>({
     resolver: yupResolver(AuthScheme)
   });
-
   const onLoginSubmit = async (data: AuthData) => {
     await signIn(data);
   };

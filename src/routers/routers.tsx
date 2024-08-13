@@ -1,8 +1,10 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import Registration from "@/pages/auth/registration/registration";
+import { Paths } from "./paths";
+import SignUpMobile from "@/pages/auth/signUp/mobile/SignUp.mobile";
+import SignInMobile from "@/pages/auth/signIn/mobile/SignIn.mobile";
+import Registration from "@/pages/auth/signUp/signUp";
 import SignIn from "@/pages/auth/signIn/signIn";
-import { Paths } from "@/routers/paths";
 
 export const router = createBrowserRouter([
   {
@@ -16,5 +18,13 @@ export const router = createBrowserRouter([
   {
     path: Paths.SIGN_IN,
     element: <SignIn/>,
+  },
+  {
+    path: Paths.SIGN_UP_MOBILE,
+    element: <SignUpMobile/>,
+  },
+  {
+    path: Paths.SIGN_IN_MOBILE,
+    element: <SignInMobile/>,
   },
 ]);
