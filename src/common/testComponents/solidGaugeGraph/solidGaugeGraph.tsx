@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
 import highchartsMore from "highcharts/highcharts-more.js";
 import highchartsSolidGauge from "highcharts/modules/solid-gauge.js";
 
