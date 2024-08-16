@@ -22,7 +22,7 @@ const InputComponent = <T extends FieldValues>(rest: InputComponentProps<T>) => 
         <Form.Item
           label={label ? label : null}
           name={field.name as string}
-          rules={[{ required: true }]}
+          rules={[{ required: false }]}
           validateStatus={errors ? "error" : ""}
           help={errors}
         >

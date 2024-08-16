@@ -1,9 +1,10 @@
 import React from 'react';
-import {Form, Input} from 'antd';
+import {Form, Input, Typography} from 'antd';
 import { Control, Controller, FieldValues, Path } from 'react-hook-form';
+import './textArea.styles.scss'
 
 const { TextArea } = Input;
-
+const { Text } = Typography
 type SelectComponentProps<T extends FieldValues> = {
   control: Control<T>;
   name: Path<T>;
@@ -22,14 +23,13 @@ const TextAreaComponent = <T extends FieldValues>(rest: SelectComponentProps<T>)
         <Form.Item
           label={label ? label : null}
           name={field.name as string}
-          rules={[{ required: true }]}
-          validateStatus={errors ? "error" : ""}
-          help={errors}
         >
           <TextArea
+            className='textarea'
             {...rest}
             {...field}
           />
+          {errors && <Text type="danger">{errors}</Text>}
         </Form.Item>
       )}
     />

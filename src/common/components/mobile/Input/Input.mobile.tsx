@@ -2,7 +2,9 @@ import React from 'react';
 import {Control, Controller, FieldValues, Path} from 'react-hook-form';
 import {Form, Input} from "antd-mobile";
 import { Typography } from "antd";
+import './input.styles.scss'
 const { Text } = Typography;
+
 
 type InputComponentProps<T extends FieldValues> = {
   control: Control<T>;
@@ -23,7 +25,11 @@ const InputMobile = <T extends FieldValues>({error, label, name, control, placeh
           layout='vertical'
           label={label}
         >
-          <Input {...field} type={type} placeholder={placeholder}/>
+          <Input
+            className='input'
+            {...field}
+            type={type}
+            placeholder={placeholder}/>
           {error && <Text type="danger">{error}</Text>}
         </Form.Item>
       )}

@@ -1,8 +1,9 @@
 import React from 'react';
-import {DatePicker, Form} from 'antd';
+import {DatePicker, Form, Typography} from 'antd';
 import { Control, Controller, FieldValues, Path } from 'react-hook-form';
 import './date.styles.scss'
 
+const { Text } = Typography;
 type SelectComponentProps<T extends FieldValues> = {
   control: Control<T>;
   name: Path<T>;
@@ -21,15 +22,13 @@ const DatePickerComponent = <T extends FieldValues>(rest: SelectComponentProps<T
         <Form.Item
           label={label ? label : null}
           name={field.name as string}
-          rules={[{ required: true }]}
-          validateStatus={errors ? "error" : ""}
-          help={errors}
         >
           <DatePicker
             className='datePicker'
             {...rest}
             {...field}
             />
+          {errors && <Text type="danger">{errors}</Text>}
         </Form.Item>
       )}
     />

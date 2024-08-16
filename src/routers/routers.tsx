@@ -5,11 +5,11 @@ import SignUpMobile from "@/pages/auth/signUp/mobile/SignUp.mobile";
 import SignInMobile from "@/pages/auth/signIn/mobile/SignIn.mobile";
 import Registration from "@/pages/auth/signUp/signUp";
 import SignIn from "@/pages/auth/signIn/signIn";
-
+import ProcuringPage from "@/pages/procuring/procuring";
 export const router = createBrowserRouter([
   {
     path: Paths.HOME,
-    element: <div>Hello World!</div>,
+    element:<ProcuringPage/>,
   },
   {
     path: Paths.SIGN_UP,
